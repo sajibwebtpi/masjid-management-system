@@ -15,10 +15,10 @@
 
         <!-- Social Login -->
         <div class="flex flex-col space-y-3 mb-5">
-            <a href="{{ route('login.github') }}" class="flex items-center justify-center border rounded-lg py-2 hover:bg-gray-100 transition">
+            <a href="//" class="flex items-center justify-center border rounded-lg py-2 hover:bg-gray-100 transition">
                 <i class="fab fa-github mr-2"></i> Login with GitHub
             </a>
-            <a href="{{ route('login.google') }}" class="flex items-center justify-center border rounded-lg py-2 hover:bg-gray-100 transition">
+            <a href="//" class="flex items-center justify-center border rounded-lg py-2 hover:bg-gray-100 transition">
                 <i class="fab fa-google mr-2"></i> Login with Google
             </a>
         </div>
@@ -26,7 +26,7 @@
         <div class="text-center text-gray-400 mb-5">OR</div>
 
         <!-- Email/Password Login -->
-        <form action="{{ route('login') }}" method="POST" class="space-y-5">
+        <form action="{{ route('user.login') }}" method="POST" class="space-y-5">
             @csrf
             <div>
                 <label class="block mb-1 font-semibold text-gray-700">Email</label>
@@ -54,7 +54,7 @@
         </form>
 
         <p class="mt-4 text-center text-gray-600">
-            Don't have an account? <a href="{{ route('register') }}" class="text-blue-500 hover:underline">Register</a>
+            Don't have an account? <a href="{{ route('auth.reg') }}" class="text-blue-500 hover:underline">Register</a>
         </p>
     </div>
 

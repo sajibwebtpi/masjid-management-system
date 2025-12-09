@@ -15,10 +15,10 @@
 
         <!-- Social Register -->
         <div class="flex flex-col space-y-3 mb-5">
-            <a href="{{ route('login.github') }}" class="flex items-center justify-center border rounded-lg py-2 hover:bg-gray-100 transition">
+            <a href="//" class="flex items-center justify-center border rounded-lg py-2 hover:bg-gray-100 transition">
                 <i class="fab fa-github mr-2"></i> Register with GitHub
             </a>
-            <a href="{{ route('login.google') }}" class="flex items-center justify-center border rounded-lg py-2 hover:bg-gray-100 transition">
+            <a href="//" class="flex items-center justify-center border rounded-lg py-2 hover:bg-gray-100 transition">
                 <i class="fab fa-google mr-2"></i> Register with Google
             </a>
         </div>
@@ -26,7 +26,7 @@
         <div class="text-center text-gray-400 mb-5">OR</div>
 
         <!-- Registration Form -->
-        <form action="{{ route('register') }}" method="POST" class="space-y-5">
+        <form action="{{ route('user.register') }}" method="POST" class="space-y-5">
             @csrf
             <div>
                 <label class="block mb-1 font-semibold text-gray-700">Full Name</label>
@@ -46,11 +46,11 @@
                        class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
             </div>
 
-            <div>
+            {{-- <div>
                 <label class="block mb-1 font-semibold text-gray-700">Confirm Password</label>
                 <input type="password" name="password_confirmation" placeholder="********"
                        class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
-            </div>
+            </div> --}}
 
             <div>
                 <button type="submit"
@@ -61,7 +61,7 @@
         </form>
 
         <p class="mt-4 text-center text-gray-600">
-            Already have an account? <a href="{{ route('login') }}" class="text-blue-500 hover:underline">Login</a>
+            Already have an account? <a href="{{ route('auth.login') }}" class="text-blue-500 hover:underline">Login</a>
         </p>
     </div>
 
