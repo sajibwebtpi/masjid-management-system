@@ -15,10 +15,10 @@
 
         <!-- Social Register -->
         <div class="flex flex-col space-y-3 mb-5">
-            <a href="//" class="flex items-center justify-center border rounded-lg py-2 hover:bg-gray-100 transition">
+            <a href="{{ route('social.redirect' , 'github') }}" class="flex items-center justify-center border rounded-lg py-2 hover:bg-gray-100 transition">
                 <i class="fab fa-github mr-2"></i> Register with GitHub
             </a>
-            <a href="//" class="flex items-center justify-center border rounded-lg py-2 hover:bg-gray-100 transition">
+            <a href="{{ route('social.redirect' , 'google') }}" class="flex items-center justify-center border rounded-lg py-2 hover:bg-gray-100 transition">
                 <i class="fab fa-google mr-2"></i> Register with Google
             </a>
         </div>
