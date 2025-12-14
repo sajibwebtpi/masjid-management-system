@@ -15,9 +15,7 @@ class AuthController extends Controller
 
         $data = $request->validated();
         User::create($data);
-        return response()->json([
-            'message' => 'User registered successfully'
-        ]);
+        return to_route('dashboard');
         
     }
 
