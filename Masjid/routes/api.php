@@ -3,6 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\rolePermissionController;
+
+
 
 
 Route::get('/user', function (Request $request) {
@@ -12,12 +15,15 @@ Route::get('/user', function (Request $request) {
      // before login and registration Apis\\
 
      Route::post('/reg' , [AuthController::class , 'registration'])->name('user.register');
-     Route::post('/login' , [AuthController::class , 'login'])->name('user.login');
      Route::get('/login' ,function(){
         return response()->json(['message' => "Please login first", 'status' => 401]);
      });
 
-           //After login Apis\\
-        Route::group(['middleware' => ['auth:sanctum']], function (){
-            Route::post('/logout' , [AuthController::class , 'logout']);
-        });
+
+
+                  // Role and permission \\
+
+    Route::post('/role' , [rolePermissionController::class,'createRole']); 
+    Route::post('/permission' , [rolePermissionController::class,'createPermission']);
+    Route::post('/permissionToRole',[rolePermissionController::class , 'assignPermissionToRole']); 
+    Route::post('/roleToUser',[rolePermissionController::class , 'assignRoleToUser']); 

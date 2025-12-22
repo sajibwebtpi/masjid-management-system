@@ -17,7 +17,7 @@ return new class extends Migration
             $table->time('fajr');
             $table->time('dhuhr');
             $table->time('asr');
-            $table->time('magrib');
+            $table->time('maghrib');
             $table->time('isha');
             $table->time('jumuah');
             $table->timestamps();

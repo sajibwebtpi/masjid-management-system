@@ -61,7 +61,7 @@
         </form>
 
         <p class="mt-4 text-center text-gray-600">
-            Already have an account? <a href="{{ route('auth.login') }}" class="text-blue-500 hover:underline">Login</a>
+            Already have an account? <a href="{{ route('login') }}" class="text-blue-500 hover:underline">Login</a>
         </p>
     </div>
 

@@ -3,149 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <title>Masjid Management Dashboard</title>
-    <style>
-        body{
-            margin:0;
-            font-family: Arial, sans-serif;
-            background:#f5f6fa;
-        }
-        .sidebar{
-            width:240px;
-            height:100vh;
-            background:#2c3e50;
-            color:white;
-            position:fixed;
-            top:0;
-            left:0;
-            padding:20px;
-        }
-        .sidebar h2{
-            margin-bottom:30px;
-        }
-        .sidebar a{
-            display:block;
-            text-decoration:none;
-            color:white;
-            margin:15px 0;
-            padding:10px;
-            border-radius:6px;
-        }
-        .sidebar a:hover{
-            background:#34495e;
-        }
-
-        .content{
-            margin-left:260px;
-            padding:20px;
-        }
-
-        .cards{
-            display:flex;
-            gap:20px;
-            margin-bottom:20px;
-        }
-
-        .card{
-            background:white;
-            padding:20px;
-            border-radius:8px;
-            box-shadow:0 1px 4px rgba(0,0,0,0.1);
-            width:30%;
-        }
-
-        .section{
-            background:white;
-            padding:20px;
-            border-radius:8px;
-            box-shadow:0 1px 4px rgba(0,0,0,0.1);
-            margin-top:20px;
-        }
-
-        table{
-            width:100%;
-            border-collapse: collapse;
-        }
-
-        table th, table td{
-            padding:12px;
-            border-bottom:1px solid #ddd;
-            text-align:left;
-        }
-
-        table th{
-            background:#ecf0f1;
-        }
-    </style>
+    @vite('resources/css/app.css')
 </head>
 
-<body>
+<body class="min-h-screen bg-gradient-to-br from-gray-950 via-gray-900 to-black text-gray-200">
 
-    <div class="sidebar">
-        <h2>Masjid Admin</h2>
-        <a href="#">Dashboard</a>
-        <a href="#">Donations</a>
-        <a href="#">Imam Management</a>
-        <a href="#">Committee Members</a>
-        <a href="#">Events</a>
-        <a href="#">Expense Records</a>
-        <a href="#">Musalli List</a>
-        <a href="#">Logout</a>
+<div class="flex min-h-screen">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-black/50 backdrop-blur-xl border-r border-white/10 hidden md:block">
+        <div class="p-6 text-2xl font-bold text-green-400 tracking-wide">
+            🕌 Masjid MS
+        </div>
+
+        <nav class="px-4 space-y-2 text-sm">
+            <a href="#" class="block px-4 py-2 rounded-lg bg-green-600/20 text-green-400">
+                Dashboard
+            </a>
+            <a href="#" class="block px-4 py-2 rounded-lg hover:bg-white/5">
+                Users
+            </a>
+            <a href="#" class="block px-4 py-2 rounded-lg hover:bg-white/5">
+                Roles & Permissions
+            </a>
+            <a href="#" class="block px-4 py-2 rounded-lg hover:bg-white/5">
+                Prayer Times
+            </a>
+            <a href="#" class="block px-4 py-2 rounded-lg hover:bg-white/5">
+                Donations
+            </a>
+            <a href="#" class="block px-4 py-2 rounded-lg hover:bg-white/5">
+                Reports
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Area -->
+    <div class="flex-1 flex flex-col">
+
+        <!-- Topbar -->
+        <header class="flex items-center justify-between px-6 py-4 bg-black/40 border-b border-white/10">
+            <h1 class="text-lg font-semibold tracking-wide">
+                Dashboard Overview
+            </h1>
+
+            <div class="flex items-center gap-4 text-sm">
+                <span class="text-gray-400">
+                    Welcome, {{ auth()->user()->name }}
+                </span>
+<form method="POST" action="{{ route('logout') }}">
+    @csrf
+    <button type="submit"
+        class="px-4 py-1 rounded-lg bg-red-500/10 text-red-400 hover:bg-red-500/20">
+        Logout
+    </button>
+</form>
+
+            </div>
+        </header>
+
+        <!-- Content -->
+        <main class="p-6 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
+
+            <!-- Card -->
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:scale-[1.02] transition">
+                <p class="text-sm text-gray-400">Total user</p>
+                <h2 class="text-3xl font-bold text-green-400 mt-2">{{ $totalUser }}</h2>
+            </div>
+
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:scale-[1.02] transition">
+                <p class="text-sm text-gray-400">Total Donations</p>
+                <h2 class="text-3xl font-bold text-green-400 mt-2">৳ 85,000</h2>
+            </div>
+
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:scale-[1.02] transition">
+                <p class="text-sm text-gray-400">Daily Prayers</p>
+                <h2 class="text-3xl font-bold text-green-400 mt-2">5</h2>
+            </div>
+
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:scale-[1.02] transition">
+                <p class="text-sm text-gray-400">Committee Members</p>
+                <h2 class="text-3xl font-bold text-green-400 mt-2">12</h2>
+            </div>
+
+        </main>
+
+        <!-- Footer -->
+
+
     </div>
-
-    <div class="content">
-        <h1>Dashboard Overview</h1>
-
-        <div class="cards">
-            <div class="card">
-                <h3>Total Donations</h3>
-                <p><b>৳ 150,000</b></p> <!-- Static data -->
-            </div>
-            <div class="card">
-                <h3>Monthly Expense</h3>
-                <p><b>৳ 42,000</b></p> <!-- Static data -->
-            </div>
-            <div class="card">
-                <h3>Committee Members</h3>
-                <p><b>12 Members</b></p> <!-- Static data -->
-            </div>
-        </div>
-
-        <div class="section">
-            <h3>Recent Donations (Static Data)</h3>
-            <table>
-                <tr>
-                    <th>Name</th>
-                    <th>Amount</th>
-                    <th>Date</th>
-                </tr>
-                <tr>
-                    <td>Abdullah</td>
-                    <td>৳ 2,000</td>
-                    <td>2025-01-10</td>
-                </tr>
-                <tr>
-                    <td>Karim</td>
-                    <td>৳ 5,000</td>
-                    <td>2025-01-09</td>
-                </tr>
-                <tr>
-                    <td>Jamil</td>
-                    <td>৳ 1,500</td>
-                    <td>2025-01-08</td>
-                </tr>
-            </table>
-        </div>
-
-        <div class="section">
-            <h3>Upcoming Events (Static)</h3>
-            <ul>
-                <li>Jummah Khutbah – Friday 1 PM</li>
-                <li>Halaqa — Saturday Night</li>
-                <li>Islamic Lecture — 20 January</li>
-            </ul>
-        </div>
-
-    </div>
-
+</div>
+        <footer class="text-center text-xs text-gray-500 py-4 border-t border-white/10">
+            © 2025 Masjid Management System. All rights reserved.
+        </footer>
 </body>
 </html>

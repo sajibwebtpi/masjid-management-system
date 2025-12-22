@@ -13,40 +13,53 @@ class AuthController extends Controller
 {
     public function registration(regRequest $request){
 
-        $data = $request->validated();
-        User::create($data);
+        $request->validated();
+
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
         return to_route('dashboard');
         
     }
 
     public function login(loginRequest $request){
-        $data = $request->validated();
+        $credential = $request->validated();
+        if(Auth::attempt([
+            'email' => $credential['email'],
+            'password' => $credential['password']
+        ])){
 
-        $user = User::where('email' , $data['email'])->first();
+            $request->session()->regenerate();
+            return redirect()->route('dashboard');
+        };
 
-        if($user && Hash::check($data['password'], $user->password)){
-            Auth::login($user);
-            $token = $user->createToken('auth_token')->plainTextToken;
+        return back()->withErrors([
+            'message' => 'email or password invalid'
+        ]);
 
-            return response()->json([
-                'message' => 'User Logged in successfully',
-                'access_token' => $token,
-                'status' => true
-            ]);
-        }
-
-        return response()->json([
-            'message' => 'Invalid credentials',
-            'status' => false
-        ], 401);
     }
 
-    public function logout(Request $request){
-        $request->user()->currentAccessToken()->delete();
 
-        return response()->json([
-            'message' => 'User Logged out successfully',
-            'status' => true
-        ]);
+
+public function logout(Request $request)
+{
+    Auth::logout();
+
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+
+    return redirect()->route('login');
+}
+
+
+
+
+    public function index(Request $request)
+    {
+        $totalUser = User::count();
+        return view('auth.dashboard' , compact('totalUser'));
     }
 }
