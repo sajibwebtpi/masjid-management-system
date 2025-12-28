@@ -12,7 +12,10 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        // ওটিপি ভেরিফাই রুটকে CSRF থেকে ছাড় দিতে
+        $middleware->validateCsrfTokens(except: [
+            '*', // আপনার Route URL টি এখানে দিন
+            ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

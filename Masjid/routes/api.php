@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MailSendingController;
 use App\Http\Controllers\rolePermissionController;
 
 
@@ -27,3 +28,4 @@ Route::get('/user', function (Request $request) {
     Route::post('/permission' , [rolePermissionController::class,'createPermission']);
     Route::post('/permissionToRole',[rolePermissionController::class , 'assignPermissionToRole']); 
     Route::post('/roleToUser',[rolePermissionController::class , 'assignRoleToUser']); 
+

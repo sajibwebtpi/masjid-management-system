@@ -89,6 +89,13 @@
                        class="w-full px-4 py-2 rounded-lg bg-transparent border border-white/20 focus:border-primary focus:ring-primary focus:ring-1 outline-none"
                        placeholder="••••••••">
             </div>
+            <div class="mb-4">
+                <h1>
+                    <a href="{{ route('send.email') }}">
+                        <span class="text-md  text-primary hover:underline">Forget your password?</span>
+                    </a>
+                </h1>
+            </div>
 
             <!-- Buttons -->
             <div class="flex gap-4 mb-6">
@@ -106,16 +113,16 @@
             </div>
 
             <!-- Social Login -->
-            <div class="flex gap-4">
+            <div class="flex justify-center gap-4">
                 <a href="{{ route('social.redirect' , 'google') }}">
-                <button class="w-1/2 flex items-center justify-center gap-2 border border-white/20 py-2 rounded-lg hover:bg-white/10">
+                <button class="w-1/2 flex items-center justify-center gap-2 ">
                     <img src="https://www.svgrepo.com/show/475656/google-color.svg" class="w-5 h-5">
                     Google
                 </button>
                 </a>
 
                 <a href="{{ route('social.redirect' , 'github') }}">
-                <button class="w-1/2 flex items-center justify-center gap-2 border border-white/20 py-2 rounded-lg hover:bg-white/10">
+                <button class="w-1/2 flex items-center justify-center gap-2 ">
                     <img src="https://www.svgrepo.com/show/512317/github-142.svg" class="w-5 h-5 invert">
                     GitHub
                 </button>

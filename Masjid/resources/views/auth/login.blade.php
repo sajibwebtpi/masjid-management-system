@@ -39,7 +39,11 @@
                 <input type="password" name="password" placeholder="********"
                        class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
             </div>
-
+            <div>
+                <a href="{{ route('send.email') }}">
+                    <span class="text-md text-blue-500 hover:underline">Forgot your password?</span>
+                </a>
+            </div>
             <div class="flex items-center">
                 <input type="checkbox" name="remember" class="mr-2">
                 <label class="text-gray-700 font-medium">Remember Me</label>

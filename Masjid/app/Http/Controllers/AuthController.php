@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Committe;
+use App\Models\PrayerTime;
 use Illuminate\Http\Request;
 use App\Http\Requests\regRequest;
 use App\Http\Requests\loginRequest;
@@ -60,6 +62,13 @@ public function logout(Request $request)
     public function index(Request $request)
     {
         $totalUser = User::count();
-        return view('auth.dashboard' , compact('totalUser'));
+        $CommitteeMembers = Committe::count();
+        $DailyPrayers = PrayerTime::where('date' , today())->count();
+        return view('auth.dashboard' , compact([
+            'totalUser',
+            'CommitteeMembers',
+            'DailyPrayers',
+            'DailyPrayers',
+        ]));
     }
 }

@@ -78,12 +78,12 @@
 
             <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:scale-[1.02] transition">
                 <p class="text-sm text-gray-400">Daily Prayers</p>
-                <h2 class="text-3xl font-bold text-green-400 mt-2">5</h2>
+                <h2 class="text-3xl font-bold text-green-400 mt-2">{{ $DailyPrayers }}</h2>
             </div>
 
             <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:scale-[1.02] transition">
                 <p class="text-sm text-gray-400">Committee Members</p>
-                <h2 class="text-3xl font-bold text-green-400 mt-2">12</h2>
+                <h2 class="text-3xl font-bold text-green-400 mt-2">{{ $CommitteeMembers }}</h2>
             </div>
 
         </main>
